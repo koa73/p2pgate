@@ -1,0 +1,204 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head  th:replace="fragments/header :: common_header(~{::title},~{::link})">
+    <title>Phone4Pay — Invoice accept</title>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/assets/css/styles.min.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/loading.min.css}" />
+
+</head>
+
+<body>
+<div class="wrapper" >
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-11 col-sm-offset-1 hid">
+                    <div class="row">
+                        <div class="col-sm-3 col-sm-offset-4">
+                            <div class="card" id="invoice" style="position: relative; display: inline-block;">
+                                <form id="InvoiceAccept" action="" method="">
+
+
+                                    <div class="card-content">
+
+                                        <h4 class="card-title"><span th:text="${receiver}" />
+                                            <p class="category" th:text="${txtMsg}" /></h4>
+
+                                        <div class="card">
+                                            <div class="card-content">
+
+                                                <div class="ld ld-hourglass ld-cycle" id="loader">
+                                                </div>
+
+                                                <div class="form-group label-floating">
+                                                    <label class="control-label">
+                                                        <smal th:text="#{invoice.label.card}" />
+                                                    </label>
+                                                    <input class="form-control" type="tel"
+                                                           id="pan"
+                                                           name="fromCard"
+                                                    />
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col-xs-6">
+
+                                                        <div class="form-group label-floating">
+                                                            <label class="control-label" th:text="#{invoice.label.expdate}" />
+                                                            <input class="form-control text-center" type="tel"
+                                                                   name="expDate"
+                                                                   id="expDate"
+                                                            />
+                                                        </div>
+
+                                                    </div>
+
+                                                    <div class="col-xs-4 col-xs-offset-2">
+
+                                                        <div class="form-group label-floating">
+                                                            <label class="control-label">
+                                                                cvc/cvv
+                                                            </label>
+                                                            <input class="form-control text-center" type="number"
+                                                                   name="cvv"
+                                                                   id="cvv"
+                                                            />
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="card-footer">
+                                                <div class="stats">
+                                                    <i class="fa fa-cc-visa fa-2x" aria-hidden="true"></i>
+                                                    <i class="fa fa-cc-mastercard fa-2x" aria-hidden="true"></i>
+                                                    <i class="icon-cc-mir" aria-hidden="true" style="font-size: 2.58em; vertical-align:middle;"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <br/>
+
+                                        <div class="category form-category">
+
+                                            <div class="col-xs-12" th:if="${sum == null}" id="sum_i">
+                                                <div class="row">
+                                                    <div class="col-xs-10">
+                                                        <div class="form-group label-floating" style="margin-left: -15px; margin-top: -8px; margin-right: -49px;">
+                                                            <label class="control-label">
+                                                                Сумма платежа
+                                                            </label>
+                                                            <input class="form-control text-right" name="sum" id="sum_inp" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-2 text-right" style="padding: 0;">
+                                                        <span class="fa fa-rub" aria-hidden="true">&nbsp;</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row" id="sum_v" th:style="${sum != null} ?'':'display:none'">
+                                                <div class="col-xs-4"><b th:text="#{invoice.sum}"></b></div>
+                                                <div class="col-xs-3">.............................</div>
+                                                <div class="col-xs-5 text-right"><b id="amount" th:text="${#numbers.formatDecimal(sum, 1, 2,'POINT')}"></b>
+                                                    <span class="fa fa-rub" aria-hidden="true">&nbsp;</span>
+                                                </div>
+                                                <input th:if="${sum != null}" type="hidden" name="sum" th:value="${#numbers.formatDecimal(sum, 1, 2,'POINT')}"/>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-xs-4"><b th:text="#{invoice.fee}"></b></div>
+                                                <div class="col-xs-3">............................</div>
+                                                <div class="col-xs-5 text-right"><span id="feeValue" th:text="${#numbers.formatDecimal(fee, 1, 2,'POINT')}"></span>
+                                                    <span class="fa fa-rub" aria-hidden="true">&nbsp;</span>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-xs-4"><b th:text="#{invoice.amount}"></b></div>
+                                                <div class="col-xs-3">.............................</div>
+                                                <div class="col-xs-5 text-right"><span id="total" th:text="${#numbers.formatDecimal(total, 1, 2,'POINT')}"></span>
+                                                    <span class="fa fa-rub" aria-hidden="true">&nbsp;</span>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-xs-4"><b th:text="#{invoice.bank}"></b></div>
+                                                <div class="col-xs-3">.............................</div>
+                                                <div class="col-xs-5 text-right">
+                                                    <span id="bank"> ?&nbsp;</span>
+                                                </div>
+                                            </div>
+                                            <br/>
+                                            <div class="checkbox pull-left">
+                                                <label>
+                                                    <input type="checkbox" name="agree">
+                                                    <small><a id="agree" th:href="${agreement}" th:text="#{invoice.agreement}"></a></small>
+                                                </label>
+                                            </div>
+                                            <br/>
+                                        </div>
+
+                                        <div class="form-footer text-right">
+
+                                <span class="toggleButton">
+                                    <button type="submit" class="btn btn-info btn-sm" id="fee" th:text="#{invoice.button.fee}" />
+                                    <button type="submit" class="btn btn-info btn-sm hidden" id="send" th:text="#{invoice.button.pay}" />
+                                </span>
+
+                                        </div>
+
+                                        <br/>
+                                        <p class="copyright pull-left">
+                                            &copy;
+                                            <script>
+                                                document.write(new Date().getFullYear())
+                                            </script>
+                                            <a href="https://phone4pay.ru">Phone4pay</a>
+                                        </p>
+
+                                    </div>
+                                    <input type="hidden" name="payid" th:value="${payid}">
+                                </form>
+                            </div>
+
+
+                            <div class="hidden" id="result">
+                                <div class="card card-stats">
+
+                                    <div class="card-header card-header-icon hidden" data-background-color="red" id="errorHeader">
+                                        <i class="material-icons">error</i>
+                                    </div>
+
+                                    <div class="card-header card-header-icon hidden" data-background-color="green" id="successHeader">
+                                        <i class="material-icons">check</i>
+                                    </div>
+
+                                    <div class="card-content">
+                                        <p class="category" id="category" th:text="#{error}"></p>
+                                        <h2 class="card-title" id="title"></h2>
+                                    </div>
+                                    <div class="card-content text-center">
+                                        <p class="category" id="msg" th:text="#{error.unavailable}"></p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <p class="copyright pull-left">
+                                            &copy;
+                                            <script>
+                                                document.write(new Date().getFullYear())
+                                            </script>
+                                            <a href="https://phone4pay.ru">Phone4pay</a>
+                                        </p>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:replace="fragments/footer :: script"></div>
+<script src="/assets/js/fixed_invoice.min.js"></script>
+</body>
+</html>

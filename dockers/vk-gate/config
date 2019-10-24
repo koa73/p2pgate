@@ -1,0 +1,18 @@
+SERVICE_NAME=p2p-gate
+LOG_PATH=/usr/local/p2p-gate/log
+ROOTDIR=/usr/local/p2p-gate
+#
+
+#----------- VK-GATE VARIABLES -----------
+SERVICE_PORT=8336
+CHROME_DRV_PATH=/usr/local/p2p-gate/drivers/linux/chromedriver
+VK_CALL_BACK_PAY=https://p2p-gate.phone4pay.ru/vk-transfer/confirm
+VK_USERNAME=
+VK_PWD=
+VK_PIN=
+
+# --------   Test card value ----
+TEST_PAN=
+TEST_CVV=
+TEST_EXP=
+

@@ -1,0 +1,12 @@
+@charset "UTF-8";
+
+
+#loader {
+  position: fixed;
+  z-index:1000;
+  opacity: 0.5;
+  display: none;
+  left: 49%;
+  font-size:32px;
+  color:#2196f3;
+}

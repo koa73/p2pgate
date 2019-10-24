@@ -1,0 +1,14 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head >
+    <title>Phone4Pay — Success-PG</title>
+    <meta http-equiv="refresh" th:attr="content=${'0; url=' + path}" />
+</head>
+<body>
+
+<script th:inline="javascript">
+    window.location.href = [[${path}]];
+</script>
+
+</body>
+</html>

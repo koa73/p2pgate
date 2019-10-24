@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head  th:replace="fragments/header :: common_header(~{::title},~{::link})">
+    <title>Phone4Pay — Success</title>
+    <link />
+</head>
+<body th:with="httpStatus=${T(org.springframework.http.HttpStatus).valueOf(#response.status)}">
+<div class="wrapper">
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="ol-sm-11 col-sm-offset-1 hid">
+                    <div class="row">
+                        <div class="col-sm-3 col-sm-offset-4">
+                            <div class="card">
+
+                                <div class="card-header card-header-icon" data-background-color="green">
+                                    <i class="material-icons">check</i>
+                                </div>
+
+                                <div class="card-content">
+
+                                    <h4 class="card-title"><span th:text="${receiver}" />
+                                        <p class="category" th:text="#{invoice.header.success}" /></h4>
+
+
+                                    <br/>
+
+                                    <div class="category form-category">
+
+
+                                        <div class="row">
+                                            <div class="col-xs-4" th:text="#{invoice.card}"></div>
+                                            <div class="col-xs-6  text-left" th:text="${pan}"></div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-xs-4" th:text="#{invoice.sum}"></div>
+                                            <div class="col-xs-3">.............................</div>
+                                            <div class="col-xs-5 text-right"><span th:text="${#numbers.formatDecimal(amount, 1, 2,'POINT')}"></span>
+                                                <span class="fa fa-rub" aria-hidden="true">&nbsp;</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-4" th:text="#{invoice.fee}"></div>
+                                            <div class="col-xs-3">............................</div>
+                                            <div class="col-xs-5 text-right"><span th:text="${#numbers.formatDecimal(fee, 1, 2,'POINT')}"></span>
+                                                <span class="fa fa-rub" aria-hidden="true">&nbsp;</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-4" th:text="#{invoice.amount}"></div>
+                                            <div class="col-xs-3">.............................</div>
+                                            <div class="col-xs-5 text-right"><b th:text="${#numbers.formatDecimal(total, 1, 2,'POINT')}"></b>
+                                                <span class="fa fa-rub" aria-hidden="true">&nbsp;</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-4" th:text="#{invoice.id}"></div>
+                                            <div class="col-xs-3">.............................</div>
+                                            <div class="col-xs-5 text-right">
+                                                <span id="oper_id" th:text="${id}"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-4" th:text="#{invoice.bank}"></div>
+                                            <div class="col-xs-3">.............................</div>
+                                            <div class="col-xs-5 text-right">
+                                                <span id="bank" th:text="${bank}"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <br/>
+                                    <p class="copyright pull-left">
+                                        &copy;
+                                        <script>
+                                            document.write(new Date().getFullYear())
+                                        </script>
+                                        <a href="https://phone4pay.ru">Phone4pay</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head  th:replace="fragments/header :: common_header(~{::title},~{::link})">
+    <title>Phone4Pay — Error</title>
+    <link />
+</head>
+<body th:with="httpStatus=${T(org.springframework.http.HttpStatus).valueOf(#response.status)}">
+<div class="wrapper">
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="ol-sm-11 col-sm-offset-1 hid">
+                    <div class="row">
+                        <div class="col-sm-3 col-sm-offset-4">
+                            <div class="card card-stats">
+                                <div class="card-header card-header-icon" data-background-color="red">
+                                    <i class="material-icons">error</i>
+                                </div>
+
+                                <div class="card-content">
+                                    <p class="category" th:text="${httpStatus.reasonPhrase}"></p>
+                                    <h2 class="card-title" th:text="|${httpStatus}|"></h2>
+                                </div>
+                                <div class="card-content text-center">
+                                    <p class="category" th:text="${errorMsg}?:#{error.__${httpStatus}__}"></p>
+                                </div>
+                                <div class="card-footer">
+                                    <p class="copyright pull-left">
+                                        &copy;
+                                        <script>
+                                            document.write(new Date().getFullYear())
+                                        </script>
+                                        <a href="https://phone4pay.ru">Phone4pay</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+server:
+  port: ${SERVICE_PORT:8336}
+
+spring:
+  mvc:
+    locale: en
+  application:
+    name: vk_gate
+  cloud:
+
+  messages:
+    encoding: UTF-8
+    basename: "classpath:/i18n/messages"
+
+logging:
+  level:
+    org.springframework.security: INFO
+
+
+webdriver:
+  gecko:
+    driver: ${GECKO_DRV_PATH:drivers\win\geckodriver.exe}
+  chrome:
+    driver: ${CHROME_DRV_PATH:drivers\win\chromedriver.exe}
+  remoute: ${REMOUTE_SERVER_HOST:http://localhost}:4444/wd/hub
+
+userenv:
+  url: ${VK_URL:https://vk.com/vkpay}
+  username: ${VK_USERNAME:}
+  pwd: ${VK_PWD:}
+  pin: ${VK_PIN:}
+
+tester: 12
+
+callback:
+  pay:  ${VK_CALL_BACK_PAY:https://p2p-gate.phone4pay.ru/vk-transfer/confirm}
+
+p2p-gateways:
+  mail:
+    url: https://cpg.money.mail.ru
+    callback: ${GATE_BACK:https://cpg.money.mail.ru/api/transaction/finish3ds/}
+
+page:
+  success: ${SUCCESS_PAGE:https://www.phone4pay.ru}
+  error: ${ERROR_PAGE:https://www.phone4pay.ru}
+
+test:
+  pan: ${TEST_PAN:}
+  cvv: ${TEST_CVV:}
+  exp: ${TEST_EXP:}

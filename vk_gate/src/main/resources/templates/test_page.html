@@ -1,0 +1,111 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head  th:replace="fragments/header :: common_header(~{::title},~{::link})">
+    <title>VK Wallet Refill</title>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/assets/css/styles.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/loading.min.css}" />
+    <link />
+</head>
+<body>
+    <div class="wrapper">
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3">
+
+                    <form action="https://p2p-gate.phone4pay.ru/vk-transfer/request" id="PayForm" name="PayForm" method="post" >
+                        <div class="card card-login">
+
+                            <div class="card-content">
+
+                                <br/>
+                                <div class="card-content">
+                                    <div class="form-group label-floating">
+                                        <label class="control-label">
+                                            <smal>Номер карты плательщика</smal>
+                                        </label>
+                                        <input class="form-control" id="pan" name="fromCard" th:value="${pan}"
+                                        />
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-xs-6">
+
+                                            <div class="form-group label-floating">
+                                                <label class="control-label">
+                                                    Срок действия
+                                                </label>
+                                                <input class="form-control text-center"
+                                                       name="exp"
+                                                       id="expDate"
+                                                       th:value="${exp}"
+                                                />
+                                            </div>
+
+                                        </div>
+
+                                        <div class="col-xs-4 col-xs-offset-2">
+                                            <div class="form-group label-floating">
+                                                <label class="control-label">
+                                                    cvc/cvv
+                                                </label>
+                                                <input class="form-control text-center"
+                                                       name="cvv"
+                                                       id="cvv" th:value="${cvv}"
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="ld ld-hourglass ld-cycle" id="loader">
+                                    </div>
+
+                                    <div class="form-group label-floating">
+                                        <label class="control-label">
+                                            <smal>Сумма</smal>
+                                        </label>
+                                        <input class="form-control" name="sum" value="5.0"/>
+                                    </div>
+
+                                    <div class="form-group label-floating">
+                                        <label class="control-label">
+                                            <smal>Номер маршрута</smal>
+                                        </label>
+                                        <input class="form-control" name="rid" value="1"/>
+                                    </div>
+
+                                    <br/>
+
+                                    <div class="form-footer text-right">
+                                        <button type="submit" class="btn btn-info btn-sm" id="submit">Перевести</button>
+                                    </div>
+
+                                    <br/>
+                                </div>
+
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <script>
+      var submit = document.getElementById("submit");
+      var form = document.getElementById("PayForm");
+      var callback = function(){
+        submit.disabled = true;
+        document.getElementById("loader").style.display ='block';
+      };
+
+      if(form.addEventListener){
+            form.addEventListener("submit", callback, false);  //Modern browsers
+      } else if(form.attachEvent){
+            form.attachEvent('onsubmit', callback);            //Old IE
+      }
+    </script>
+</body>
+</html>

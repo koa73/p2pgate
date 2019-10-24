@@ -1,0 +1,48 @@
+server:
+  port: ${BANK_GATE_PORT:8226}
+
+spring:
+  mvc:
+    locale: en
+  application:
+    name: bank_gate
+  cloud:
+
+  messages:
+    encoding: UTF-8
+    basename: "classpath:/i18n/messages"
+
+  redis:
+    host: ${REDIS_HOST:127.0.0.1}
+    port: ${REDIS_PORT:6379}
+    database: ${REDIS_DB:0}
+    password: ${REDIS_PWD:}
+
+logging:
+  level:
+    org.springframework.security: INFO
+
+callback:
+  pay:  ${CALL_BACK_PAY:https://prod-app.phone4pay.ru/pay/confirm}
+
+page:
+  success: ${SUCCESS_PAGE:https://www.phone4pay.ru}
+  error: ${ERROR_PAGE:https://www.phone4pay.ru}
+
+pay:
+  receiver: ${RECEIVER_CARD:0000000000000000}
+  jwt:
+    iss: ${JWT_ISS:ru.phone4pay}
+    key: ${JWT_KEY:kva6YVFPH9u+IeDgija22IwUEPb/WkPyzgaUoGI5U2BfFTd8TjyOaPqW/zPJQL8GBoqBzMoDL9L211yKnRsPaw==}
+    uuid: ${UUID_NAMESPACE:}
+
+p2p-gateways:
+  bin:
+    url: https://p2p.mdm.ru
+  tcs:
+    url: https://api.tinkoff.ru
+
+paypage:
+  receiver: ${PAY_PAGE_RECEIVER:Unknown}
+  agreement: ${PAY_PAGE_AGREEMENT:https://phone4pay.ru/oferta}
+

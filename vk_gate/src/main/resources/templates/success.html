@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head  th:replace="fragments/header :: common_header(~{::title},~{::link})">
+    <title>Phone4Pay — Success</title>
+    <link />
+</head>
+<body th:with="httpStatus=${T(org.springframework.http.HttpStatus).valueOf(#response.status)}">
+<div class="wrapper">
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="ol-sm-11 col-sm-offset-1 hid">
+                    <div class="row">
+                        <div class="col-sm-3 col-sm-offset-4">
+                            <div class="card">
+
+                                <div class="card-header card-header-icon" data-background-color="green">
+                                    <i class="material-icons">check</i>
+                                </div>
+
+                                <div class="card-content">
+
+                                    <h4 class="card-title"><span th:text="${receiver}" />
+                                        <p class="category">Refilled successfully</p></h4>
+
+
+                                    <br/>
+
+                                    <div class="category form-category">
+
+
+                                        <div class="row">
+                                            <div class="col-xs-4">Username</div>
+                                            <div class="col-xs-6  text-left" th:text="${user}"></div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-xs-4">Amount</div>
+                                            <div class="col-xs-3">.............................</div>
+                                            <div class="col-xs-5 text-right">
+                                                <span th:text="${amount}"></span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <br/>
+                                    <p class="copyright pull-left">
+                                        &copy;
+                                        <script>
+                                            document.write(new Date().getFullYear())
+                                        </script>
+                                        <a href="https://phone4pay.ru">Phone4pay</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

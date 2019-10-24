@@ -1,0 +1,4 @@
+# Project exclude paths
+/bank_gate/target/
+/lib/target/
+/vk_gate/target/

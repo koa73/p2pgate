@@ -1,0 +1,27 @@
+SERVICE_NAME=p2p-gate
+LOG_PATH=/usr/local/p2p-gate/log
+ROOTDIR=/usr/local/p2p-gate
+#
+############################### BANK_GATE CUSTOM VARIABLES ####################
+BANK_GATE_PORT=8226
+CALL_BACK_PAY=https://test-front.phone4pay.ru/pay/confirm
+ERROR_PAGE=https://www.phone4pay.ru
+SUCCESS_PAGE=https://www.phone4pay.ru
+
+#REDIS_HOST=127.0.0.1
+#REDIS_PORT=6379
+#REDIS_DB=0
+#REDIS_PWD=
+
+RECEIVER_CARD=
+JWT_ISS=ru.phone4pay
+JWT_KEY=kva6YVFPH9u+IeDgija22IwUEPb/WkPyzgaUoGI5U2BfFTd8TjyOaPqW/zPJQL8GBoqBzMoDL9L211yKnRsPaw==
+UUID_NAMESPACE=669671eb-fbfe-5e13-a7df-9410f857e989
+
+##############################  Test page paremeters ###############################
+PAY_PAGE_RECEIVER=Unknown
+PAY_PAGE_AGREEMENT=https://phone4pay.ru/oferta
+
+
+
+

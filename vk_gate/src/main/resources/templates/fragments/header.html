@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:fragment="common_header(title,links)">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="icon" type="image/png" href="/favicon.ico" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title th:replace="${title}">Invoice request from Phone4pay</title>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+    <!-- Bootstrap core CSS     -->
+    <link th:href="@{/assets/css/bootstrap.min.css}" rel="stylesheet" />
+    <!--  Material Dashboard CSS    -->
+    <link th:href="@{/assets/css/material-dashboard.min.css?v=1.2.0}" rel="stylesheet" />
+    <!--     Fonts and icons     -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!--/* Per-page placeholder for additional links */-->
+    <th:block th:replace="${links}" />
+
+</head>
+<body>
+
+</body>
+</html>
