@@ -37,6 +37,8 @@ COPY bank-gate.sh /usr/local/p2p-gate/
 COPY config /usr/local/p2p-gate/etc/
 COPY bank-gate.jar /usr/local/p2p-gate/bin/
 
+RUN chmod +x /usr/local/p2p-gate/bank-gate.sh
+
 CMD /usr/local/p2p-gate/bank-gate.sh start && redis-server
 
 EXPOSE 8226
