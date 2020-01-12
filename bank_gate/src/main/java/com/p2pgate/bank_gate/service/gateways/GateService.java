@@ -26,7 +26,7 @@ public interface GateService {
         do {
             fee = Math.max(minFee,(tmp * feePercent/100));
             tmp = sum - fee;
-            if (fee == 30)
+            if (fee == minFee)
                 break;
 
         } while (Math.abs(tmp*(feePercent/100+1) -sum)>.01);
