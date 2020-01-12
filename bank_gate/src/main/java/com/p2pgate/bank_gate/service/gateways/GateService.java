@@ -29,7 +29,7 @@ public interface GateService {
             if (fee == minFee)
                 break;
 
-        } while (Math.abs(tmp*(feePercent/100+1) -sum)>.01);
+        } while (Math.abs(tmp*(feePercent/100+1) -sum)>.01f);
 
         if ((tmp*(feePercent/100+1) -sum) >0)
             tmp -=.01f;
