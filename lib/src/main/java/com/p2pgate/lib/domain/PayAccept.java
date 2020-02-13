@@ -24,7 +24,7 @@ public class PayAccept {
     @Sum(min=100, max = 100000)
     private Float sum;
     @JsonProperty("rid")
-    @Pattern(regexp = "[15]",message="rid.")
+    @Pattern(regexp = "[015]",message="rid.")
     private String rid;
     @JsonProperty("payid")
     private String payid;

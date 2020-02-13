@@ -13,7 +13,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 
-
 @Service
 public class PayServiceImpl implements PayService {
 
@@ -26,7 +25,6 @@ public class PayServiceImpl implements PayService {
     @Qualifier("bin")
     GateService binService;
 
-
     @Value("${callback.pay}")
     private String payCallback;
 
@@ -36,6 +34,7 @@ public class PayServiceImpl implements PayService {
     public String getFee(PayFee request) throws PayApiException {
 
         GateService client = getRouteClient(request.getRid());
+
         FeeResponse response = client.getFee(request);
 
 
@@ -53,10 +52,18 @@ public class PayServiceImpl implements PayService {
             response.setRid(request.getRid());
         }
 
-        if (request.getRid().matches("1")) {
-            response.setBank("TCS Bank");
-        } else if (request.getRid().matches("5")){
-            response.setBank("BIN Bank");
+        switch (request.getRid()){
+
+            case "1":
+                response.setBank("TCS Bank");
+                break;
+
+            case "5":
+                response.setBank("BIN Bank");
+                break;
+
+            default:
+                response.setBank("TCS Bank");
         }
 
         return response.getShortJson();
@@ -66,7 +73,6 @@ public class PayServiceImpl implements PayService {
     public String acceptPay(PayAccept request) throws PayApiException {
 
         return getRouteClient(request.getRid()).sendPay(request, payCallback);
-
     }
 
     @Override

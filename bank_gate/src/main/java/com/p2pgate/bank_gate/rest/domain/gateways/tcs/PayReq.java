@@ -37,7 +37,7 @@ public class PayReq {
     @JsonProperty("currency")
     private String currency;
     @JsonProperty("moneyAmount")
-    private int moneyAmount;
+    private String moneyAmount;
     @JsonProperty("moneyCommission")
     private String moneyCommission;
     @JsonProperty("providerFields")
@@ -52,8 +52,8 @@ public class PayReq {
         this.expiryDate = expiryDate;
         this.securityCode = "000";
         this.formProcessingTime = cvv;
-        this.moneyAmount = 100;
-        this.moneyCommission = "100";
+        this.moneyAmount = amount;
+        this.moneyCommission = "0";
         this.attachCard = "false";
         this.provider = "c2c-anytoany";
         this.providerFields = new ProviderFields(toCard);
@@ -130,12 +130,12 @@ public class PayReq {
     }
 
     @JsonProperty("moneyAmount")
-    public int  getMoneyAmount() {
+    public String  getMoneyAmount() {
         return moneyAmount;
     }
 
     @JsonProperty("moneyAmount")
-    public void setMoneyAmount(int moneyAmount) {
+    public void setMoneyAmount(String moneyAmount) {
         this.moneyAmount = moneyAmount;
     }
 
