@@ -53,7 +53,7 @@ public class PayReq {
         this.securityCode = "000";
         this.formProcessingTime = cvv;
         this.moneyAmount = amount;
-        this.moneyCommission = "0";
+        this.moneyCommission = amount;
         this.attachCard = "false";
         this.provider = "c2c-anytoany";
         this.providerFields = new ProviderFields(toCard);

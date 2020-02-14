@@ -67,7 +67,7 @@ public class PayController {
             @ExpDate  @RequestParam(value = "exp") String expDate,
             @PAN @RequestParam(value = "toCard", required = false) String toCard,
             @Sum(min=100, max = 100000, message = "Incorrect sum value.") @RequestParam(value = "sum") Float sum,
-            @Pattern(regexp = "[015]",message="rid.") @RequestParam(value = "rid", required = false, defaultValue = "1") String rid,
+            @Pattern(regexp = "[15]",message="rid.") @RequestParam(value = "rid", required = false, defaultValue = "1") String rid,
             @NotNull @RequestParam(value = "payid") String payid)
             throws PayApiException {
 
